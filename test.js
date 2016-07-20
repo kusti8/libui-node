@@ -3,6 +3,11 @@ import libui from './index';
 
 libui.Ui.init();
 
+test.only('UiControl::setParent - allow null parent', () => {
+	const e = new libui.UiEntry();
+	e.setParent(null);
+});
+
 test('new UiWindow - throw if too few arguments', t => {
 	const err = t.throws(() => new libui.UiWindow('Test window'));
 	t.true(err instanceof Error);
@@ -63,6 +68,10 @@ function checkProperty(Class, propertyName, type, builder = () => new Class()) {
 
 			widget[propertyName] = false;
 			t.false(getter());
+
+			t.is(t.throws(() => setter("true")).message, 'Type mismatch');
+			t.is(t.throws(() => setter(1)).message, 'Type mismatch');
+			t.is(t.throws(() => setter(null)).message, 'Type mismatch');
 		}
 
 		if (type === String) {
