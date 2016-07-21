@@ -67,6 +67,18 @@ function checkProperty(Class, propertyName, type, builder = () => new Class()) {
 			t.is(t.throws(() => setter("true")).message, 'Type mismatch');
 			t.is(t.throws(() => setter(1)).message, 'Type mismatch');
 			t.is(t.throws(() => setter(null)).message, 'Type mismatch');
+
+			t.is(t.throws(() => {
+				widget[propertyName] = "true";
+			}).message, 'Type mismatch');
+
+			t.is(t.throws(() => {
+				widget[propertyName] = 1;
+			}).message, 'Type mismatch');
+
+			t.is(t.throws(() => {
+				widget[propertyName] = null;
+			}).message, 'Type mismatch');
 		}
 
 		if (type === String) {
