@@ -53,7 +53,7 @@ NBIND_CLASS(UiGrid) {
 	method(append);
 	method(insertAt);
 	method(getPadded);
-	method(setPadded);
+	method(setPadded, nbind::Strict());
 	getset(getPadded, setPadded);
 	DECLARE_CONTROL_METHODS()
 }

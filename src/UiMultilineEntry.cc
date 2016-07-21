@@ -46,7 +46,7 @@ NBIND_CLASS(UiMultilineEntry) {
 	method(getText);
 	method(setText);
 	method(getReadOnly);
-	method(setReadOnly);
+	method(setReadOnly, nbind::Strict());
 	method(append);
 	method(onChanged);
 

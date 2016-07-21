@@ -34,7 +34,7 @@ NBIND_CLASS(UiForm) {
 	method(append);
 	method(deleteAt);
 	method(getPadded);
-	method(setPadded);
+	method(setPadded, nbind::Strict());
 	getset(getPadded, setPadded);
 	DECLARE_CONTROL_METHODS()
 }

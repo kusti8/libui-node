@@ -38,7 +38,7 @@ NBIND_CLASS(UiCheckbox) {
 	getset(getChecked, setChecked);
 	getset(getText, setText);
 	method(getChecked);
-	method(setChecked);
+	method(setChecked, nbind::Strict());
 	method(getText);
 	method(setText);
 	method(onToggled);

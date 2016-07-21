@@ -50,9 +50,9 @@
 	method(setParent); \
 	method(toplevel); \
 	method(getVisible); \
-	method(setVisible); \
+	method(setVisible, nbind::Strict()); \
 	method(getEnabled); \
-	method(setEnabled); \
+	method(setEnabled, nbind::Strict()); \
 	getset(getVisible, setVisible); \
 	getset(getEnabled, setEnabled);
 
@@ -79,7 +79,7 @@
 	method(getText); \
 	method(setText); \
 	method(getReadOnly); \
-	method(setReadOnly);
+	method(setReadOnly, nbind::Strict());
 
 #define DEFINE_BOX_METHODS() \
 	void append(UiControl *control, bool stretchy); \
