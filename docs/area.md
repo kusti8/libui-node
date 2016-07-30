@@ -7,35 +7,29 @@
 UiArea provide a canvas you can draw on. It also receives keyboard and mouse events, supports scrolling, is DPI aware, and has several other useful features.
 
 ```js
-var libui = require('libui');
-var colorDodgerBlue = 0x1E90FF;
-var uiDrawFillModeWinding = 0;
+var libui = require('../index.js');
+
 libui.Ui.init();
-var win = new libui.UiWindow('UiEntry example', 640, 480, true);
 
-var handler = {
-	draw: function draw(area, p) {
-		// draw a filled rectangle with dodger blue color
-		var brush = buildSolidBrush(colorDodgerBlue, 1.0);
-		var path = new libui.UiDrawPath(uiDrawFillModeWinding);
-		path.addRectangle(0, 0, p.getAreaWidth(), p.getAreaHeight());
-		path.end();
-		p.getContext().fill(path, brush);
-		path.freePath();
-	},
-	mouseEvent: function () {},
-	mouseCrossed: function () {},
-	dragBroken: function () {},
-	keyEvent: function () {}
-};
+function draw(area, p) {
+   var brush = new libui.DrawBrush(),
+       path = new libui.UiDrawPath(0);
 
-var widget = new libui.UiArea(handler);
+   brush.setColor(new libui.Color(128,0,0,1));
+   path.addRectangle(50, 30, 250, 120);
+   path.end();
+   p.getContext().fill(path, brush);
+   path.freePath();
+}
+var noop = function () {};
+var win = new libui.UiWindow('minimal Canvas rectangle', 640, 480, true),
+    canvas = new libui.UiArea(draw, noop, noop, noop, noop);
 
-win.setChild(widget);
+win.setChild(canvas);
 
 win.onClosing(function () {
-	win.close();
-	libui.stopLoop();
+    win.close();
+    libui.stopLoop();
 });
 
 win.show();
