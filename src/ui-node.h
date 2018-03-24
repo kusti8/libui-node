@@ -790,4 +790,11 @@ class UiGrid : public UiControl {
   DEFINE_CONTROL_METHODS()
 };
 
+class UiFixed : public UiControl {
+ public:
+  UiFixed();
+  DEFINE_CONTROL_METHODS()
+  void append(UiControl *c, int x, int y);
+};
+
 #endif

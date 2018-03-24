@@ -18,7 +18,7 @@
 		"start-core": "node examples/core-api.js",
 		"autogypi": "autogypi",
 		"node-gyp": "node-gyp",
-		"install": "libui-download && autogypi && npm run build",
+		"install": "autogypi && npm run build",
 		"build": "node-gyp configure build",
 		"clean": "rm -rf build; rm -rf node_modules;"
 	},

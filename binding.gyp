@@ -52,6 +52,7 @@
 				"src/UiControl.cc",
 				"src/UiLabel.cc",
 				"src/UiButton.cc",
+				"src/UiFixed.cc",
 			],
 			"conditions": [
 				["OS=='win'", {

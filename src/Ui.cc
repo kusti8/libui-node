@@ -1,6 +1,7 @@
 #include "../ui.h"
 #include "nbind/api.h"
 #include "nbind/nbind.h"
+#include "ui-node.h"
 /* TODO: this has to be removed */
 
 static int onShouldQuit_cb(void *data) {
@@ -18,6 +19,16 @@ struct Ui {
 
   static void onShouldQuit(nbind::cbFunction & cb) {
     uiOnShouldQuit(onShouldQuit_cb, new nbind::cbFunction(cb));
+  }
+
+  static Size size(UiControl *c) {
+    int width, height;
+    uiSize(c->getHandle(), &width, &height);
+    return Size(width, height);
+  }
+
+  static void setSize(UiControl *c, int width, int height) {
+    uiSetSize(c->getHandle(), width, height);
   }
 
   static void quit() { uiQuit(); }
@@ -40,4 +51,6 @@ NBIND_CLASS(Ui) {
   method(mainStep);
   method(mainSteps);
   method(onShouldQuit);
+  method(setSize);
+  method(size);
 }
