@@ -75,8 +75,12 @@
 					"sources": [
 						"src/arch/unix/libui_loop.cc"
 					],
+					'cflags': [
+						"-fvisibility=hidden"
+					],
 					'ldflags': [
-						"-Wl,-rpath,'$$ORIGIN',-rpath,<(module_root_dir)",
+						"-Wl,-rpath,'$$ORIGIN',-rpath,<(module_root_dir)"
+						"-fvisibility=hidden"
 					],
 					"libraries": [
 						"<(module_root_dir)/libui.so"
