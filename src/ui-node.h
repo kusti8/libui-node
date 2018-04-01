@@ -795,6 +795,7 @@ class UiFixed : public UiControl {
   UiFixed();
   DEFINE_CONTROL_METHODS()
   void append(UiControl *c, int x, int y);
+  void move(UiControl *c, int x, int y);
 };
 
 #endif
